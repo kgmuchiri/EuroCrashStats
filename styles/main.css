@@ -1,0 +1,46 @@
+:root{
+    /*font*/
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* var colours*/
+    --nav-bar-bg:black;
+    --nav-bar-text:white;
+    --nav-bar-hover:green;
+    --scrollbar-thumb-color: green;
+    --scrollbar-color:white;
+
+
+    /*webkit scroll*/
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background-color: var(--scrollbar-color);
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb-color);
+        border-radius: 1px;
+    }
+
+}
+html {
+    scroll-behavior: smooth;
+}
+body{
+    border:0;
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    scroll-margin-top: 55px;
+    
+}
+ul{
+    padding:0;
+}

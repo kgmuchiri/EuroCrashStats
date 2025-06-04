@@ -42,6 +42,18 @@ export default class LineChart {
             .style("z-index", 9999)
             .style("pointer-events", "none");
 
+        // ① find the slider + the span that displays its value
+        this.yearSlider     = document.getElementById('year-slider');
+        this.yearValueLabel = document.getElementById('year-value');
+
+        // ② whenever the slider moves…
+        this.yearSlider.addEventListener('input', () => {
+            // — update the visible label
+            this.yearValueLabel.textContent = this.yearSlider.value;
+            // — re‐highlight the point (if a country is already highlighted)
+            if (this.highlightedCountry) this.highlightCountry(this.highlightedCountry);
+        });
+
         // Initial rendering and resize listener
         this.resize();
         window.addEventListener('resize', () => this.resize());
@@ -193,18 +205,39 @@ export default class LineChart {
 
         return this;
     }
+    
+    #highlightYearPoint() {
+        if (!this.yearSlider || !this.highlightedCountry) return;
+      
+        const year = +this.yearSlider.value;
+      
+        // reset **all** nodes
+        this.nodes
+          .attr('r', 3)
+          .attr('stroke', null)
+          .attr('stroke-width', null);
+      
+        // pick out the one node with BOTH country & year, and pop it out
+        this.chart.selectAll('circle.node')
+          .filter(d => d.country === this.highlightedCountry && d.year === year)
+          .attr('r', 6)
+          .attr('stroke', 'black')
+          .attr('stroke-width', 1);
+      }
 
     // Highlight a specific country's line and nodes
     highlightCountry(country) {
         this.highlightedCountry = country;
+        this.#highlightYearPoint(); 
         this.#updateLines();
+        
         return this;
     }
 
     // Tooltip interaction handlers
     handleNodeMouseOver(event, d) {
         this.tooltip.style("display", "block")
-            .html(`<strong>${d.country}</strong><br>Year: ${d.year}<br>value: ${d[this.metric]}`);
+            .html(`<strong>${d.country}</strong><br>Year: ${d.year}<br>${this.labelY.text()} ${d[this.metric]}`);
 
         d3.select(event.target)
             .transition().duration(150)

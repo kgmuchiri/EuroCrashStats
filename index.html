@@ -42,74 +42,55 @@
                     <a href=#overview class="nav-item">
                         <li>Overview</li>
                     </a>
-                    <a href="#map-sect" class="nav-item">
-                        <li>Map</li>
+                    <a href="#rta-sect" class="nav-item">
+                        <li>Accidents and Fatalities</li>
                     </a>
-                    <a href="#socio-econ" class="nav-item">
-                        <li>Socio-Economic</li>
+                    <a href="#accident-sect" class="nav-item">
+                        <li>Accident Correlation</li>
                     </a>
-                    <a href="#demographic-sect" class="nav-item">
-                        <li>Demographic</li>
+                    <a href="#fatality-sect" class="nav-item">
+                        <li>Fatality Correlation</li>
                     </a>
                     <a href="#cross-country" class="nav-item">
                         <li>Cross-country Analysis</li>
                     </a>
                     <a href="#insights-sect" class="nav-item">
-                        <li>Insights</li>
+                        <li>High and Low Risk Countries</li>
                     </a>
                 </ul>
             </div>
 
             <!--Main Body-->
             <div class="main-body">
-                <div class="sect overview-hero" id="overview">
-                    <div class="overview-content">
-                        <div class="text-content">
-                            <h1 class="hero-title">
-                                Discover & Analyse <br>
-                                <span class="highlight">Road Safety Patterns</span><br>
-                                Across Europe
-                            </h1>
-                            <p class="hero-subtitle">
-                                An Interactive Exploration of Factors Influencing Road Accidents
-                            </p>
-
-                            <ul class="hero-points">
-                                <li> Analyse socio-economic & demographic factors linked to road fatalities.</li>
-                                <li> Compare cross-country accident statistics & motorization trends.</li>
-                                <li> Gain data-driven insights to inform policy & road safety strategies.</li>
-                            </ul>
-
-                            <a href="#map-sect" class="cta-btn">Analyse Data</a>
-                        </div>
-
-                        <div class="image-wrapper">
-                            <div class="blue-shape"></div>
-                            <img src="/image/car-accident.png" alt="Europe Globe" class="hero-img">
-                            <img src="/image/globe.png" alt="Car Safety" class="hero-img-small">
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-                <div class="sect" id="map-sect">
-                    <div class="dash-banner">
-                        <h2 id="dashboard-title">EU Transport Safety Dashboard</h2>
-                        <p>
-                            Explore patterns in transportation safety across the EU through this dashboard.
-                            Select from key road safety metrics to visualize recent data and long-term trends.
-                            Click on a country in the map for more insight.
+                <div class="sect" id="overview">
+                   <div id="overview-info">
+                        <h1>EU Road Safety Dashboard</h1>
+                        <p>This is a website that looks at the road accident and fatality for countries within the European
+                            Union from 1998 to 3016. 
                         </p>
 
+                   </div>
+                   <div id="overview-image">
+
+                   </div>
+                </div>
+
+                <!-- Accidents and Fatalities-->
+                <div class="sect" id="rta-sect">
+                    <div class="banner" id="rta-banner">
+                        <h2 id="dashboard-title">EU Road Accident and Fatality Stats</h2>
+                        <p>
+                            Explore patterns in transportation safety across the EU through this interactive graph.
+                            Select from key road safety metrics to visualize recent data and long-term trends.
+                            Select a country on the map for more insight.
+                        </p>
                     </div>
 
+        
                     <div id="dash-content">
+                        
                         <div id="display-map">
-                            <h2 id="map-title">
-                                </h1>
+                            
                                 <div id="map-container"> </div>
                                 <div id="controls-container">
                                     <div id="slider-container">
@@ -141,148 +122,34 @@
                     </div>
 
                 </div>
-
-                <div class="sect" id="socio-econ">
-                     <!-- Section Banner for Socio-Economic -->
-                <div class="section-banner" id="socio-economic-sect">
-                    <h2>Socio-Economic Analysis</h2>
-                    <p>
-                        Socio-economic factors, such as GDP, education levels, and urbanization, influence road accident
-                        trends. This section visualizes their impact across European countries.
-                    </p>
-                </div>
-
-                <!-- Dual Layout for Socio-Economic Section -->
-                <div class="grid-container">
-                    <div class="grid-item chart">
-                        <div class="pie-chart-wrapper">
-                            <h3>Alcohol vs Fatalities Dual Chart</h3>
-                            <p>Trends showing relationship between alcohol consumption and fatalities per million across
-                                time.</p>
-                            <div id="alcohol-chart-container"></div>
-                        </div>
-                    </div>
-
-                    <div class="grid-item chart">
-                        <div class="pie-chart-wrapper">
-                            <h3 id="countryTitle">Italy</h3>
-                            <select id="countrySelector" style="margin-bottom: 10px;"></select>
-
-                            <!-- Canvas + Legend container -->
-                            <div style="display: flex; align-items: center; justify-content: center; gap: 30px;">
-                                <canvas id="fatalitiesChart" width="300" height="300"></canvas>
-                                <div id="customLegend" style="font-size: 14px;"></div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                </div>
-
-            <div class="sect" id="demographic-sect">
-
-                <!-- Section Banner for Demographics -->
-                <div class="section-banner" id="demographics-sect">
-                    <h2>Demographics and Risk Factors</h2>
-                    <p>
-                        This section explores the relationship between demographic indicators—such as unemployment
-                        rates—and road fatalities.
-                        Understanding these patterns helps uncover socio-behavioral risk factors over time.
-                    </p>
-                </div>
-
-                <!-- Dual Chart Layout for Demographics -->
-                <div class="grid-container">
-                    <div class="grid-item chart" id="chart-dual">
-                        <div class="pie-chart-wrapper">
-                            <h3>Dual-Line Chart</h3>
-                            <p>
-                                Temporal trends showing how unemployment rates relate to road fatalities per million
-                                across European countries.
-                                Use the dropdown to explore trends by country.
-                            </p>
-                            <div id="dual-line-chart-container"></div>
-                        </div>
-                    </div>
-                    <div class="grid-item chart" id="chart-2">
-                        <div id="demographic-bar-chart"></div>
-                    </div>
-
-                </div>
-
-
-            </div>
-
                 
-
-
-            <div class="sect" id="cross-country">
-                 <!-- Cross-Country Analysis Section -->
-                 <div class="section-banner">
-                    <h2>Cross-Country Analysis</h2>
-                    <p>
-                        Infrastructure investment plays a crucial role in road safety and accident prevention.
-                        This section explores how European countries allocate their budgets between road construction
-                        and maintenance.
-                    </p>
-                </div>
-
-                <!-- Section for Stacked Bar Chart -->
-                <div class="chart-text-section" id="cross-country-sect">
-                    <div class="chart-text">
-                        <h3>Budget Allocation for Road Safety</h3>
-                        <p>This chart visualizes how each country splits its road safety budget between construction and
-                            maintenance over time.</p>
-                    </div>
-                    <div id="chart-container"></div>
-                </div>
-
-                <!-- Section for Scatter Plot -->
-                <div class="chart-text-section reverse">
-                    <div id="scatterChart"></div>
-                    <div class="chart-text">
-                        <h3>GDP vs Road Fatalities</h3>
-                        <p>The scatter plot highlights how GDP per capita correlates with road fatalities, offering
-                            insights into economic impact on road safety.</p>
-                    </div>
-                </div>
-
-            </div>
-
-               
-
-
-                <div class="sect" id="insights-sect">
-                    <div class="section-banner">
-                        <h2>Insights</h2>
+                <!-- Accidents Correlation-->
+                <div class="sect" id="accident-sect">
+                    <div class="banner" id="accident-banner">
+                        <h2 id="dashboard-title">Road Accident Factors</h2>
                         <p>
-                            This section is dedicated to providing insights into the road accident data and the factors
-                            that contribute to road safety.
+                            Take a look at how socio-economic, demographic, and policies affect the amount of Accidents
+                            occur per capita and per billion passenger-km.
                         </p>
                     </div>
-
+                   
                 </div>
-                
 
-                <div id="viz-container" style="display: flex; justify-content: center; margin-top: 20px;"></div>
-
+                <!-- Fatality Correlation-->
+                <div class="sect" id="fatality-sect">
+                    <div class="banner" id="fatality-banner">
+                        <h2 id="dashboard-title">Road Fatalities Factors</h2>
+                        <p>
+                            Take a look at how socio-economic, demographic, and policies affect how many fatalities occur
+                            per accident
+                        </p>
+                    </div>
+                   
+                </div>
 
                 <script type="module" src="scripts/main.js"></script>
-                <script type="module" src="./scripts/map/mapScript.js"></script>
-                <script type="module" src="scripts/stacked_barchart.js"></script> <!-- Added Stacked Bar Chart -->
-                <script type="module" src="scripts/bubble&donut.js"></script> <!-- file renamed-->
-                <script type="module" src="scripts/scatter_plot.js"></script> <!-- Added Scatter Plots -->
-                <script type="module">
-                    import { renderSocioPieChart } from './scripts/SocioPieChart.js';
-                    renderSocioPieChart();
-                </script>
 
-                <script type="module" src="scripts/alcohol_chart.js"></script>
-                <script type="module" src="scripts/petrol.js"></script>
-                <script type="module" src="scripts/dual_line_chart.js"></script>
-                <script type="module" src="scripts/demographic_bar_chart.js"></script>
+
 
         </body>
 

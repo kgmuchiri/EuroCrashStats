@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 
-    //Smoot scrolling
+    //Smooth scrolling
     navLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
             e.preventDefault();

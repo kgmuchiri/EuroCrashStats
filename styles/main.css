@@ -7,19 +7,18 @@
     --nav-bar-text:white;
     --nav-bar-hover:green;
     --scrollbar-thumb-color: green;
-    --scrollbar-color:white;
+    --scrollbar-color:rgba(255, 255, 255, 0.0);
 
 
     /*webkit scroll*/
     /* width */
     ::-webkit-scrollbar {
-        width: 10px;
+        width: 5px;
+        background: transparent;
     }
     
-    /* Track */
-    ::-webkit-scrollbar-track {
-        background-color: var(--scrollbar-color);
-    }
+
+    
     
     /* Handle */
     ::-webkit-scrollbar-thumb {
@@ -43,4 +42,7 @@ body{
 }
 ul{
     padding:0;
+}
+#overview{
+    min-height: 80vh;
 }

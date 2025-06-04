@@ -9,7 +9,7 @@ export class MapVisualization {
         this.latestYear = latestYear;
         this.metricOptions = metricOptions;
         this.metric = initialMetric; // Metric to visualize (e.g., "accid_adj_pc_km")
-        this.height = window.innerHeight * 0.70;
+        this.height = window.innerHeight;
         this.width = this.height*1.2;
         this.activeCountry = null; // Selected country
         this.defaultColor = "green"; // Default country color
@@ -18,6 +18,7 @@ export class MapVisualization {
         this.noDataCountryColor= "#d3d3d3";
         this.lineChartBoolean = false;
         this.lineChart  = null;
+        this.projectionScale = window.innerHeight;
         
         
     }
@@ -252,7 +253,7 @@ export class MapVisualization {
         this.tooltip.style("display", "none");
     }
 
-    //During country
+
     handleCountryClick(d) {
        
         if (!this.interactiveCountries.includes(d.properties.NAME)) return; //removes interaction for countries not in the dataset
@@ -383,9 +384,10 @@ export class MapVisualization {
         this.updateDimensions();
         this.svg
             .attr("viewBox", `0 0 ${this.width} ${this.height}`);
+        
     
-      
     }
+
 
 
 }

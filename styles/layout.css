@@ -44,235 +44,242 @@
 }
 
 
-.main-body{
-    height:calc(100vh - 55px);
-    position:absolute;
-    top:50px;
-    width:100vw;
-    scroll-margin-top: 50px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
+    .main-body{
+        height:calc(100vh - 55px);
+        position:absolute;
+        top:50px;
+        width:100vw;
+        scroll-margin-top: 50px;
+        overflow-y: auto;
+        display: grid;
+        flex-direction: column;
 
-}
-.sect {
-    margin-top: 20px; /* Adds more space above each section */
-    margin-bottom: 50px; /* Adds space below each section */
-    padding: 20px; /* Adds internal padding to avoid text touching the edges */
-    padding-left: 0;
-    padding-right: 0;
-}
-
-
-#display-map{
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    height: 100%;
-    align-content: center;
-}
-
-#map-container{
-    display: flex;
-    align-items: center;
-    padding-right:10px; 
-    justify-content: center;
-   
-}
-
-#map-sect{
-    display: flex;
-    flex-direction: column;
-    h2{
-        text-align: center;
-        margin-bottom: 5px;
-        margin-top: 5px;
     }
-    justify-content: center;
-    padding-top: 5px;
-    
+    .sect {
+        margin-top: 20px; 
+        margin-bottom: 50px; 
+        padding-left: 0;
+        padding-right: 0;
+        min-height: calc(100vh - 50px);
+    }
 
 
-}
-#dash-content{
-    display: flex;
-    flex-direction: row;
-    padding:10px;
-    align-items: center;
-    justify-content: center;
-}
-#map-info{
-    margin:20px;
-    padding:10px;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    width: 40vw;
-  
-   
-
-}
-#map-descript{
-    background-color: lightgray;
-    min-height: 10vh;
-    margin-bottom: 10px;
-    border-radius: 15px;
-}
-#country-graph{
-    box-sizing: border-box;
-    width: 100%;
-    display:flex;
-    flex-direction: column;
-    
-
-}
-
-
-#country-label{
-    display: flex;
-    font-size: 22px;
-    font-weight: lighter;
-    justify-content: center;
-    color: white;
-    background-color: black;
-    padding:10px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-    
-#country-info{
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    height: 100%;
-
-    #fact-nav{
+    #display-map{
+        display: flex;
+        flex-direction: column;
         box-sizing: border-box;
-        width: 100%;
-        background-color: #db7b2b;
-        ul{
-            margin:0;
-            padding: 0;
-            margin-top: 5px;
-            justify-items: flex-start;
-        }
-        .fnav{
-            display:inline-block;
-            padding:15px;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-
-        }
-
+        height: 100%;
+        align-content: center;
     }
 
-    
-}
-
-.fnav:hover{
-    background-color: black;
-    color: white;
-}
-.fnav.active{
-    background-color: white;
-    color:black;
-}
-#graph-info{
-    background-color: white;
-    box-sizing: border-box;
-    height: 100%;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    padding: 10px;
-}
-
-
-#controls-container{
-    display: flex;
-    flex-direction: column;
-    
-    align-items: center;
-    div{
-        padding-right: 30px;
+    #map-container{
         display: flex;
         align-items: center;
+        padding-right:10px; 
+        justify-content: center;
+    
+    }
+
+    #map-sect{
+        display: flex;
+        flex-direction: column;
+        h2{
+            text-align: center;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        justify-content: center;
         padding-top: 5px;
+        
+
+
     }
-}
-
-#slider-container{
-    display: flex;
-    flex-direction: column;
-    input{
-        min-width: 40vw;
-        max-width: 41vw;
+    #dash-content{
+        display: flex;
+        flex-direction: row;
+        padding:10px;
+        align-items: center;
+        justify-content: center;
     }
+    #map-info{
+        margin:20px;
+        padding:10px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        width: 40vw;
+    
     
 
-}
+    }
+    #map-descript{
+        background-color: lightgray;
+        min-height: 10vh;
+        margin-bottom: 10px;
+        border-radius: 15px;
+    }
+    #country-graph{
+        box-sizing: border-box;
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+        
 
-#metric-selector {
-    width: fit-content;
-    padding: 4px;
-    font-size: 14px;
-    background-color: #f8f9fa;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    color: #333;
-    cursor: pointer;
-}
-
-#metric-selector:hover {
-    background-color: #e9ecef;
-}
-
-#metric-selector:focus {
-    outline: none;
-    border-color: #0056b3;
-}
-
-datalist {
-    display: flex;
-    flex-direction: row; /* Display options horizontally */
-    justify-content: space-between; /* Space out the options evenly */
-    width: 100%; /* Match the width of the slider */
-    margin-top: 10px; /* Add some space between the slider and the labels */
-    
-}
-
-/* Style each option (year label) */
-option {
-    position: relative; /* Position the label relative to the tick */
-    text-align: center; /* Center the label text */
-    font-size: 11px; /* Adjust font size */
-    color: #666; /* Adjust text color */
-    
-}
-
-#year-value{
-    display: none;
-}
+    }
 
 
-.line{
-    fill:none;
-}
+    #country-label{
+        display: flex;
+        font-size: 22px;
+        font-weight: lighter;
+        justify-content: center;
+        color: white;
+        background-color: black;
+        padding:10px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+        
+    #country-info{
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        height: 100%;
 
-.dash-banner {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 1.2rem;
-}
+        #fact-nav{
+            box-sizing: border-box;
+            width: 100%;
+            background-color: #db7b2b;
+            ul{
+                margin:0;
+                padding: 0;
+                margin-top: 5px;
+                justify-items: flex-start;
+            }
+            .fnav{
+                display:inline-block;
+                padding:15px;
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
 
-.dash-banner h2 {
-    margin-bottom: 0.5rem;
-    font-size: 20px;
-}
+            }
 
-.dash-banner p {
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.2;
-    font-size: 14px;
-}
+        }
+
+        
+    }
+
+    .fnav:hover{
+        background-color: black;
+        color: white;
+    }
+    .fnav.active{
+        background-color: white;
+        color:black;
+    }
+    #graph-info{
+        background-color: white;
+        box-sizing: border-box;
+        height: 100%;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        padding: 10px;
+    }
+
+
+    #controls-container{
+        display: flex;
+        flex-direction: column;
+        
+        align-items: center;
+        div{
+            padding-right: 30px;
+            display: flex;
+            align-items: center;
+            padding-top: 5px;
+        }
+    }
+
+    #slider-container{
+        display: flex;
+        flex-direction: column;
+        input{
+            min-width: 40vw;
+            max-width: 41vw;
+        }
+        
+
+    }
+
+    #metric-selector {
+        width: fit-content;
+        padding: 4px;
+        font-size: 14px;
+        background-color: #f8f9fa;
+        border: 2px solid #007bff;
+        border-radius: 5px;
+        color: #333;
+        cursor: pointer;
+    }
+
+    #metric-selector:hover {
+        background-color: #e9ecef;
+    }
+
+    #metric-selector:focus {
+        outline: none;
+        border-color: #0056b3;
+    }
+
+    datalist {
+        display: flex;
+        flex-direction: row; /* Display options horizontally */
+        justify-content: space-between; /* Space out the options evenly */
+        width: 100%; /* Match the width of the slider */
+        margin-top: 10px; /* Add some space between the slider and the labels */
+        
+    }
+
+    /* Style each option (year label) */
+    option {
+        position: relative; /* Position the label relative to the tick */
+        text-align: center; /* Center the label text */
+        font-size: 11px; /* Adjust font size */
+        color: #666; /* Adjust text color */
+        
+    }
+
+    #year-value{
+        display: none;
+    }
+
+
+    .line{
+        fill:none;
+    }
+
+    .banner{
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        padding: 1.2rem;
+    }
+
+    .banner h2 {
+        font-size: 20px;
+        margin:0.5rem;
+    }
+
+    .banner p {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.2;
+        font-size: 14px;
+    }
+    h2{
+        text-align: center;
+
+    }
+    #map-title{
+        margin:5px;
+    }

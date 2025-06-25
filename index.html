@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="/styles/layout.css">
     <!-- loading D3.js library -->
     <script src="libs/d3/d3.v7.min.js"></script>
-    <script type="module" src="scripts/scroll.js"></script> <!--For navigation-->
+    <script type= "module" src="scripts/utils/theme.js"></script>
+    <script type="module" src="scripts/utils/scroll.js"></script> <!--For navigation-->
 
     <head>
         <meta charset="UTF-8">
@@ -52,12 +53,14 @@
                         <li>Fatality Correlation</li>
                     </a>
                     <a href="#cross-country" class="nav-item">
-                        <li>Cross-country Analysis</li>
+                        <li>Individual Stats by Countries</li>
                     </a>
                     <a href="#insights-sect" class="nav-item">
                         <li>High and Low Risk Countries</li>
                     </a>
+                     
                 </ul>
+               <button id="themeToggle">Toggle Dark Mode</button>
             </div>
 
             <!--Main Body-->

@@ -3,11 +3,16 @@
     font-family: Arial, Helvetica, sans-serif;
 
     /* var colours*/
-    --nav-bar-bg:black;
+    --nav-bar-bg:#2d728f;
     --nav-bar-text:white;
-    --nav-bar-hover:green;
-    --scrollbar-thumb-color: green;
+    --nav-bar-hover:#0d4259;
+    --scrollbar-thumb-color: #2d728f;
     --scrollbar-color:rgba(255, 255, 255, 0.0);
+    --main-bg-color:white;
+    --main-text-color:black;
+    --accent-color-1:#78101C;
+    --hover-color-metric:#e9ecef;
+    --legend-text-color:var(--main-text-color);
 
 
     /*webkit scroll*/
@@ -17,8 +22,6 @@
         background: transparent;
     }
     
-
-    
     
     /* Handle */
     ::-webkit-scrollbar-thumb {
@@ -26,6 +29,20 @@
         border-radius: 1px;
     }
 
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --nav-bar-bg:#9BC53D;
+    --nav-bar-text:black;
+    --nav-bar-hover:#f2fae0;
+    --scrollbar-thumb-color: #9BC53D;
+    --scrollbar-color:rgba(255, 255, 255, 0.0);
+    --main-bg-color:black;
+    --main-text-color:white;
+    --accent-color-1:#EF233C;
+     --hover-color-metric:#656666;
+  }
 }
 html {
     scroll-behavior: smooth;
@@ -36,13 +53,37 @@ body{
     margin:0;
     display:flex;
     flex-direction: column;
-    overflow-y: hidden;
     scroll-margin-top: 55px;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    height: 100%;
     
 }
 ul{
     padding:0;
 }
 #overview{
-    min-height: 80vh;
+    min-height: 90vh;
+}
+.theme-dark{
+    --nav-bar-bg:#9BC53D;
+    --nav-bar-text:black;
+    --nav-bar-hover:#f2fae0;
+    --scrollbar-thumb-color: #9BC53D;
+    --scrollbar-color:rgba(255, 255, 255, 0.0);
+    --main-bg-color:black;
+    --main-text-color:white;
+    --accent-color-1:#EF233C;
+    --hover-color-metric:#656666;
+}
+.theme-light{
+    --nav-bar-bg:#2d728f;
+    --nav-bar-text:white;
+    --nav-bar-hover:#0d4259;
+    --scrollbar-thumb-color: #2d728f;
+    --scrollbar-color:rgba(255, 255, 255, 0.0);
+    --main-bg-color:white;
+    --main-text-color:black;
+    --accent-color-1:#78101C;
+    --hover-color-metric:#e9ecef;
 }

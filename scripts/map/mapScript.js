@@ -12,16 +12,15 @@ export class MapVisualization {
         this.height = window.innerHeight;
         this.width = this.height*1.2;
         this.activeCountry = null; // Selected country
-        this.defaultColor = "green"; // Default country color
-        this.hoverColor = "#ffcc00"; // Hover color
-        this.activeColor = "green"; // Selected country color
+        this.defaultColor = "#85CB33"; // Default country color
+        this.hoverColor = "#fbff12"; // Hover color 
         this.noDataCountryColor= "#d3d3d3";
         this.lineChartBoolean = false;
         this.lineChart  = null;
         this.projectionScale = window.innerHeight;
         
-        
     }
+
 
     //initialises map
     init() {
@@ -35,8 +34,14 @@ export class MapVisualization {
         this.lineChartForMap('#line-graph-country');
         this.updateLineChart();
         this.updateTitle();
+        this.updateColorsFromCss();
+        this.setupThemeListener();
+        this.updateMapColors(); 
         
     }
+    
+    
+    
 
     createSvg() {
         // Set up container dimensions
@@ -55,8 +60,6 @@ export class MapVisualization {
             .append("div")
             .attr("class", "map_tooltip")
             .style("position", "absolute")
-            .style("background", "#fff")
-            .style("border", "1px solid #ccc")
             .style("padding", "5px")
             .style("border-radius", "5px")
             .style("display", "none")
@@ -69,11 +72,15 @@ export class MapVisualization {
 
     //Creates colour scale based on metric value
     updateColorScale(){
-        this.colorScale = d3.scaleSequential(d3.interpolateReds)
+    const customInterpolator = d3.interpolateRgbBasis(["#FBC8CF","#EF233C","#78101C"]);
+    
+    this.colorScale = d3.scaleSequential(customInterpolator)
         .domain([d3.min(this.dataset, d => d[this.metric]), d3.max(this.dataset, d => d[this.metric])]);
-        this.svg.selectAll(".color-legend").remove();
-        this.addColorLegend();
-    }
+    
+    this.svg.selectAll(".color-legend").remove();
+    this.addColorLegend();
+}
+    
     
     /*Getter and setter methods */
     //Updates map with selected metric
@@ -156,7 +163,6 @@ export class MapVisualization {
             .attr("class", "country-path") 
             .attr("d", path)
             .attr("fill", d => this.getCountryColor(d, this.latestYear)) // Initial year
-            .attr("stroke", "black")
             .attr("stroke-width", 0.75)
             .on("mouseover", (event, d) => this.handleMouseOver(event, d))
             .on("mouseout", (event, d) => this.handleMouseOut(event, d))
@@ -262,13 +268,17 @@ export class MapVisualization {
             // Reset zoom and color
             this.activeCountry = null;
             this.svg.transition().duration(750).call(this.zoom.transform, d3.zoomIdentity);
-            d3.selectAll(".country-path").attr("fill", d => this.getCountryColor(d, d3.select("#year-slider").property("value")));
+            d3.selectAll(".country-path")
+                .style("fill", null)
+                .attr("fill", d => this.getCountryColor(d, d3.select("#year-slider").property("value")));
             document.getElementById("country-label").innerHTML = "Select a Country";
             console.log(this.activeCountry);
             this.lineChart.highlightCountry(null)
             return this.activeCountry;
         } else {
             // Zoom into the selected country
+            d3.selectAll(".country-path")
+                .style("fill", null)
             this.activeCountry = d.properties.NAME;
             const countryData = this.dataset.filter(data => data.country === this.activeCountry && data[this.metric] !== undefined);
             document.getElementById("country-label").innerHTML = this.activeCountry;
@@ -335,7 +345,6 @@ export class MapVisualization {
             .attr("width", legendWidth)
             .attr("height", legendHeight)
             .style("fill", "url(#color-gradient)")
-            .style("stroke", "#000")
             .style("stroke-width", 1);
     
         // Add labels for the min and max values
@@ -344,14 +353,12 @@ export class MapVisualization {
             .attr("y", legendHeight + 15)
             .text(colorDomain[0].toFixed(2)) // Min value
             .style("font-size", "12px")
-            .style("fill", "#000");
     
         legendGroup.append("text")
             .attr("x", legendWidth)
             .attr("y", legendHeight + 15)
             .text(colorDomain[1].toFixed(2)) // Max value
             .style("font-size", "12px")
-            .style("fill", "#000")
             .style("text-anchor", "end");
     
     }
@@ -387,6 +394,35 @@ export class MapVisualization {
         
     
     }
+
+    getNavbarColor() {
+        return getComputedStyle(document.documentElement)
+            .getPropertyValue('--nav-bar-bg')
+            .trim();
+    }
+    updateColorsFromCss() {
+        this.activeColor = this.getNavbarColor() || this.activeColor || '#85CB33';
+    }
+
+    
+
+    updateMapColors() {
+        if (!this.activeCountry) return; // nothing selected, no update needed
+
+        this.svg.selectAll(".country-path")
+            .filter(d => d.properties.NAME === this.activeCountry)  // only active country
+            .style("fill", this.activeColor);
+    }
+
+    setupThemeListener() {
+    window.addEventListener('themeChange', () => {
+        this.updateColorsFromCss();
+        // repaint all countries with correct colors (except active uses activeColor)
+        this.updateMap(d3.select("#year-slider").property("value"));
+        // repaint active country with activeColor overlay
+        this.updateMapColors();
+    });
+}
 
 
 

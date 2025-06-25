@@ -34,8 +34,6 @@ export default class LineChart {
             .append("div")
             .attr("class", "line_tooltip")
             .style("position", "absolute")
-            .style("background", "#fff")
-            .style("border", "1px solid #ccc")
             .style("padding", "5px")
             .style("border-radius", "5px")
             .style("display", "none")

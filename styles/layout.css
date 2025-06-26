@@ -58,265 +58,289 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
         
 
 }
-    .sect {
-        margin-top: 20px; 
-        margin-bottom: 50px; 
-        padding-left: 0;
-        padding-right: 0;
-        min-height: calc(100vh - 50px);
-        background-color: var(--main-bg-color);
-        color: var(--main-text-color);
-        flex-shrink: 0;
-    }
+.sect {
+    margin-top: 20px; 
+    margin-bottom: 50px; 
+    padding-left: 0;
+    padding-right: 0;
+    min-height: calc(100vh - 50px);
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    flex-shrink: 0;
+}
 
 
-    #display-map{
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-        height: 100%;
-        align-content: center;
-    }
+#display-map{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    align-content: center;
+}
 
-    #map-container{
-        display: flex;
-        align-items: center;
-        padding-right:10px; 
-        justify-content: center;
-    
-    }
+#map-container{
+    display: flex;
+    align-items: center;
+    padding-right:10px; 
+    justify-content: center;
 
-    #map-sect{
-        display: flex;
-        flex-direction: column;
-        h2{
-            text-align: center;
-            margin-bottom: 5px;
-            margin-top: 5px;
-        }
-        justify-content: center;
-        padding-top: 5px;
-        
+}
 
-
-    }
-    #dash-content{
-        display: flex;
-        flex-direction: row;
-        padding:10px;
-        align-items: center;
-        justify-content: center;
-    }
-    #map-info{
-        margin:20px;
-        padding:10px;
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-        width: 40vw;
-    
-    
-
-    }
-    #map-descript{
-        background-color: lightgray;
-        min-height: 10vh;
-        margin-bottom: 10px;
-        border-radius: 15px;
-    }
-    #country-graph{
-        box-sizing: border-box;
-        width: 100%;
-        display:flex;
-        flex-direction: column;
-        
-
-    }
-
-
-    #country-label{
-        display: flex;
-        font-size: 22px;
-        font-weight: lighter;
-        justify-content: center;
-        color: var(--main-bg-color);
-        background-color: var(--main-text-color);
-        padding:10px;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-    }
-        
-    #country-info{
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-        height: 100%;
-
-        #fact-nav{
-            box-sizing: border-box;
-            width: 100%;
-            background-color: #db7b2b;
-            ul{
-                margin:0;
-                padding: 0;
-                margin-top: 5px;
-                justify-items: flex-start;
-            }
-            .fnav{
-                display:inline-block;
-                padding:15px;
-                border-top-left-radius: 15px;
-                border-top-right-radius: 15px;
-            }
-        }
-    }
-
-    #line-graph-country{
-        background-color: var(--main-bg-color);
-        color: var(--main-text-color);
-    }
-
-    .line_tooltip, .map_tooltip {
-        background-color: var(--main-bg-color);
-        color: var(--main-text-color);
-        outline: var(--hover-color-metric) solid 1px;
-    }
-
-    .color-legend text{
-        fill: var(--legend-text-color);
-    }
-    .color-legend rect{
-        stroke: var(--main-text-color);
-    }
-    .country-path{
-        stroke: var(--main-bg-color);
-    }
-
-    .fnav:hover{
-        background-color: black;
-        color: white;
-    }
-    .fnav.active{
-        background-color: white;
-        color:black;
-    }
-    #graph-info{
-        background-color: var(--main-bg-color);
-        box-sizing: border-box;
-        height: 100%;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-        padding: 10px;
-    }
-
-
-    #controls-container{
-        display: flex;
-        flex-direction: column;
-        
-        align-items: center;
-        div{
-            padding-right: 30px;
-            display: flex;
-            align-items: center;
-            padding-top: 5px;
-        }
-    }
-
-    #slider-container{
-        display: flex;
-        flex-direction: column;
-        color: var(--main-text-color);
-        input{
-            min-width: 40vw;
-            max-width: 41vw;
-        }
-        
-        
-
-    }
-
-    #metric-selector {
-        width: fit-content;
-        padding: 4px;
-        font-size: 14px;
-        background-color: var(--main-bg-color);
-        border: 2px solid var(--nav-bar-bg);
-        border-radius: 5px;
-        color: var(--main-text-color);
-        cursor: pointer;
-    }
-
-    #metric-selector:hover {
-        background-color: var(--hover-color-metric);
-    }
-
-    #metric-selector:focus {
-        outline: none;
-        border-color: var(--accent-color-1);
-    }
-
-    datalist {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between; 
-        width: 100%; 
-        margin-top: 10px; 
-        
-    }
-
-    /* Style each option (year label) */
-    option {
-        position: relative; 
-        text-align: center;
-        font-size: 11px;
-        color: var(--main-text-color); 
-        
-    }
-
-    #year-value{
-        display: none;
-    }
-    .line{
-        fill:none;
-    }
-
-    .banner{
-        background-color: var(--main-bg-color);
-        color: var(--main-text-color);
-        text-align: center;
-        padding: 1.2rem;
-    }
-
-    .banner h2 {
-        font-size: 20px;
-        margin:0.5rem;
-    }
-
-    .banner p {
-        max-width: 800px;
-        margin: 0 auto;
-        line-height: 1.2;
-        font-size: 14px;
-    }
+#map-sect{
+    display: flex;
+    flex-direction: column;
     h2{
         text-align: center;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    justify-content: center;
+    padding-top: 5px;
+    
+
+
+}
+#dash-content{
+    display: flex;
+    flex-direction: row;
+    padding:10px;
+    align-items: center;
+    justify-content: center;
+}
+#map-info{
+    margin:20px;
+    padding:10px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 40vw;
+
+
+
+}
+#map-descript{
+    background-color: lightgray;
+    min-height: 10vh;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+#country-graph{
+    box-sizing: border-box;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    
+
+}
+
+
+#country-label{
+    display: flex;
+    font-size: 22px;
+    font-weight: lighter;
+    justify-content: center;
+    color: var(--main-bg-color);
+    background-color: var(--main-text-color);
+    padding:10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+    
+#country-info{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+
+    #fact-nav{
+        box-sizing: border-box;
+        width: 100%;
+        background-color: #db7b2b;
+        ul{
+            margin:0;
+            padding: 0;
+            margin-top: 5px;
+            justify-items: flex-start;
+        }
+        .fnav{
+            display:inline-block;
+            padding:15px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+    }
+}
+
+#line-graph-country{
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+.line_tooltip, .map_tooltip {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    outline: var(--hover-color-metric) solid 1px;
+}
+
+.color-legend text{
+    fill: var(--legend-text-color);
+}
+.color-legend rect{
+    stroke: var(--main-text-color);
+}
+.country-path{
+    stroke: var(--main-bg-color);
+}
+
+.fnav:hover{
+    background-color: black;
+    color: white;
+}
+.fnav.active{
+    background-color: white;
+    color:black;
+}
+#graph-info{
+    background-color: var(--main-bg-color);
+    box-sizing: border-box;
+    height: 100%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 10px;
+}
+
+
+#controls-container{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    div{
+        padding-right: 30px;
+        display: flex;
+        align-items: center;
+        padding-top: 5px;
+    }
+}
+
+#slider-container{
+    display: flex;
+    flex-direction: column;
+    color: var(--main-text-color);
+    input{
+        min-width: 40vw;
+        max-width: 41vw;
+    }
+    
+    
+
+}
+
+#metric-selector {
+    width: fit-content;
+    padding: 4px;
+    font-size: 14px;
+    background-color: var(--main-bg-color);
+    border: 2px solid var(--nav-bar-bg);
+    border-radius: 5px;
+    color: var(--main-text-color);
+    cursor: pointer;
+}
+
+#metric-selector:hover {
+    background-color: var(--hover-color-metric);
+}
+
+#metric-selector:focus {
+    outline: none;
+    border-color: var(--accent-color-1);
+}
+
+datalist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    width: 100%; 
+    margin-top: 10px; 
+    
+}
+
+/* Style each option (year label) */
+option {
+    position: relative; 
+    text-align: center;
+    font-size: 11px;
+    color: var(--main-text-color); 
+    
+}
+
+#year-value{
+    display: none;
+}
+.line{
+    fill:none;
+}
+
+.banner{
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    text-align: center;
+    padding: 1.2rem;
+}
+
+.banner h2 {
+    font-size: 20px;
+    margin:0.5rem;
+}
+
+.banner p {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.2;
+    font-size: 14px;
+}
+h2{
+    text-align: center;
+
+}
+#map-title{
+    margin:5px;
+}
+
+.nav-bar button{
+    background-color: var(--nav-bar-text);
+    color: var(--nav-bar-bg);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 40px;
+    margin-right: 10px;
+}
+
+ @media only screen and (max-width: 1000px) {
+    #dash-content{
+        flex-direction: column;
+        align-items: center;
+    }
+    .sect{
+        min-height: 100%;
+    }
+    .viz-linechart{
+        width: 100%;
+        font-size: 9px;
 
     }
-    #map-title{
-        margin:5px;
+    #map-info{
+        width: 100vw;
+    }    
+}
+ @media only screen and (max-width: 900px) {
+    .nav-bar {
+        font-size: 14px;
     }
-
-    .nav-bar button{
-        background-color: var(--nav-bar-text);
-        color: var(--nav-bar-bg);
-        border: none;
-        padding: 5px 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        height: 40px;
-        margin-right: 10px;
-    }
+ }

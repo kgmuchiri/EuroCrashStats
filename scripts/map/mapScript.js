@@ -306,15 +306,13 @@ export class MapVisualization {
             this.zoom.transform,
             d3.zoomIdentity.translate(translateX, translateY).scale(scale)
         );
-
-
  
     }
     // Add a scale indicator to the map
     addColorLegend() {
         // Dimensions and position of the legend
-        const legendWidth = 200;
-        const legendHeight = 20;
+        const legendWidth = 0.3 * this.width; // 50% of the width of the map
+        const legendHeight = 0.1 * legendWidth; // 20% of the height of the map
         const legendMargin = { top: 20, right: 20, bottom: 20, left: 20 };
     
         // Create a group for the legend
@@ -352,13 +350,13 @@ export class MapVisualization {
             .attr("x", 0)
             .attr("y", legendHeight + 15)
             .text(colorDomain[0].toFixed(2)) // Min value
-            .style("font-size", "12px")
+            .style("font-size", "0.5em")
     
         legendGroup.append("text")
             .attr("x", legendWidth)
             .attr("y", legendHeight + 15)
             .text(colorDomain[1].toFixed(2)) // Max value
-            .style("font-size", "12px")
+            .style("font-size", "0.5em")
             .style("text-anchor", "end");
     
     }
@@ -391,7 +389,6 @@ export class MapVisualization {
         this.updateDimensions();
         this.svg
             .attr("viewBox", `0 0 ${this.width} ${this.height}`);
-        
     
     }
 

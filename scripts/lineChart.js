@@ -11,11 +11,11 @@ export default class LineChart {
     constructor(container) {
         // Select the container and create an SVG element
         this.container = d3.select(container);
+        this.height = window.innerHeight;
+        this.width = this.height*1.2;
 
         this.svg = this.container.append('svg')
-            .classed('viz linechart', true)
-            .style('width', '40vw')
-            .style('height', 'auto')
+            .classed('viz-linechart', true)
             .attr('preserveAspectRatio', 'xMinYMin meet');
 
         // Append chart elements
@@ -59,13 +59,16 @@ export default class LineChart {
 
     // Compute margins based on container width
     #computeResponsiveMargin() {
-        const base = this.width;
-        return [
-            base * 0.05, // top
-            base * 0.05, // bottom
-            base * 0.08, // left
-            base * 0.05  // right
-        ];
+        const base1 = this.height;
+        const base2 = this.width;
+
+        if (this.width < 1000) {
+            return [base1 * 0.1, base1 * 0.1, base1 * 0.15, base1 * 0.1];
+        }
+        else{
+            return [base2 * 0.01, base2 * 0.01, base2 * 0.012, base2 * 0.01];
+        }
+        
     }
 
     // Adjust chart size based on viewport and re-render
@@ -82,6 +85,7 @@ export default class LineChart {
             this.#updateAxes();
             this.setLabels(this.labelX.text(), this.labelY.text());
             this.setTitle(this.title.text());
+            
         }
     }
 
@@ -100,6 +104,8 @@ export default class LineChart {
         this.axisX.attr('transform', `translate(${this.margin[2]},${this.height - this.margin[1]})`);
         this.axisY.attr('transform', `translate(${this.margin[2]},${this.margin[0]})`);
     }
+
+  
 
     // Draw and animate lines and nodes
     #updateLines() {
@@ -167,6 +173,14 @@ export default class LineChart {
 
         this.axisX.transition().duration(750).call(axisGenX);
         this.axisY.transition().duration(750).call(axisGenY);
+        // Dynamically scale font size (between 8px and 14px based on width)
+        const fontSize = Math.max(5, Math.min(14, this.width * 0.015));
+
+        this.axisX.selectAll('text')
+            .style('font-size', `${fontSize}px`);
+
+        this.axisY.selectAll('text')
+            .style('font-size', `${fontSize}px`);
     }
 
     // Render the chart with new data and metric

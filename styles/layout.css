@@ -284,6 +284,9 @@ option {
 .line{
     fill:none;
 }
+input#year-slider{
+    width: 100vw;
+}
 
 .banner{
     background-color: var(--main-bg-color);
@@ -337,7 +340,16 @@ h2{
     }
     #map-info{
         width: 100vw;
-    }    
+    } 
+    #slider-container{
+    input{
+        min-width: 80vw;
+        max-width: 90vw;
+    }
+    
+    
+
+}   
 }
  @media only screen and (max-width: 900px) {
     .nav-bar {

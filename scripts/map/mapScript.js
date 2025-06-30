@@ -134,14 +134,15 @@ export class MapVisualization {
 
     //Gets map data
     loadMapData() {
-        const projection = d3.geoMercator()
+        this.projection = d3.geoMercator()
             .center([5, 55])
-            .scale(this.height) //to account for different size screens
+            .scale(this.height)
             .translate([this.width / 2, this.height / 2]);
 
-        const path = d3.geoPath().projection(projection);
+        this.path = d3.geoPath().projection(this.projection);
+
         d3.json("./scripts/map/europe.geojson").then(geoData => {
-            this.renderMap(geoData, path);
+            this.renderMap(geoData, this.path);
         }).catch(error => {
             console.error("Error loading GeoJSON:", error);
         });
@@ -161,7 +162,7 @@ export class MapVisualization {
             .data(geoData.features)
             .enter().append("path")
             .attr("class", "country-path") 
-            .attr("d", path)
+            .attr("d", this.path)
             .attr("fill", d => this.getCountryColor(d, this.latestYear)) // Initial year
             .attr("stroke-width", 0.75)
             .on("mouseover", (event, d) => this.handleMouseOver(event, d))
@@ -291,13 +292,7 @@ export class MapVisualization {
     }
     //Animates zoom in, changes active country colour
     zoomToCountry(d) {
-        const projection = d3.geoMercator()
-            .center([5, 55])
-            .scale(this.height)
-            .translate([this.width / 2, this.height / 2]);
-
-        const path = d3.geoPath().projection(projection);
-        const [[x0, y0], [x1, y1]] = path.bounds(d);
+        const [[x0, y0], [x1, y1]] = this.path.bounds(d);
         const scale = Math.min(2.5, 0.9 / Math.max((x1 - x0) / this.width, (y1 - y0) / this.height));
         const translateX = this.width / 2 - scale * (x0 + x1) / 2;
         const translateY = this.height / 2 - scale * (y0 + y1) / 2;
@@ -350,13 +345,13 @@ export class MapVisualization {
             .attr("x", 0)
             .attr("y", legendHeight + 15)
             .text(colorDomain[0].toFixed(2)) // Min value
-            .style("font-size", "0.5em")
+            .style("font-size", `${legendWidth * 0.075}px`);
     
         legendGroup.append("text")
             .attr("x", legendWidth)
             .attr("y", legendHeight + 15)
             .text(colorDomain[1].toFixed(2)) // Max value
-            .style("font-size", "0.5em")
+            .style("font-size", `${legendWidth * 0.075}px`)
             .style("text-anchor", "end");
     
     }
@@ -389,7 +384,24 @@ export class MapVisualization {
         this.updateDimensions();
         this.svg
             .attr("viewBox", `0 0 ${this.width} ${this.height}`);
-    
+        // Update Projection
+        this.projection
+            .scale(this.height)
+            .translate([this.width / 2, this.height / 2]);
+
+        this.path = d3.geoPath().projection(this.projection);
+
+        // Update Map Paths
+        this.mapGroup.selectAll("path")
+            .attr("d", this.path);
+
+        // Update Color Legend (remove & redraw for responsive scaling)
+        this.svg.selectAll(".color-legend").remove();
+        this.addColorLegend();
+
+        // Update Map Colors
+        const year = d3.select("#year-slider").property("value");
+        this.updateMap(year);
     }
 
     getNavbarColor() {

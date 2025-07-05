@@ -64,6 +64,7 @@ ul{
 }
 #overview{
     min-height: 90vh;
+    padding: 5px;
 }
 .theme-dark{
     --nav-bar-bg:#9BC53D;

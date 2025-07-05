@@ -140,7 +140,7 @@
 
 #country-label{
     display: flex;
-    font-size: 22px;
+    font-size: 16px;
     font-weight: lighter;
     justify-content: center;
     color: var(--main-bg-color);
